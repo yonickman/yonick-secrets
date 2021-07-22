@@ -1,5 +1,9 @@
 # yonick secrets
- Všechno, co by tě mohlo zajímat
+### Všechno, co by tě mohlo zajímat
 
-YouTube - https://youtube.com/c/yonick \n
-Instagram - https://instagram.com/yonickman
+## Sociální sítě
+
+- YouTube - https://youtube.com/c/yonick
+- Instagram - https://instagram.com/yonickman
+- Twitter - https://twitter.com/yonick92036542
+- TikTok - https://www.tiktok.com/@yonickman
