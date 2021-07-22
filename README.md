@@ -1,5 +1,5 @@
 # yonick secrets
  Všechno, co by tě mohlo zajímat
 
-YouTube - https://youtube.com/c/yonick
-Instagram - httos://instagram.com/yonickman
+YouTube - https://youtube.com/c/yonick \n
+Instagram - https://instagram.com/yonickman
