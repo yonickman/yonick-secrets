@@ -5,6 +5,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; ^ = ctrl, + = shift, ! = alt
 
+Iconn = C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\icon3.png
+Menu, Tray, Icon, %Iconn%
+
 #SingleInstance force
 
 #Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\main.ahk
