@@ -7,8 +7,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #SingleInstance force
 
-Iconn = C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\icon.png
-Menu, Tray, Icon, %Iconn%
+Iconnnn = C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\icon1.png
+Menu, Tray, Icon, %Iconnnn%
 
 #IfWinActive ahk_class Chrome_WidgetWin_1
 ^r::
