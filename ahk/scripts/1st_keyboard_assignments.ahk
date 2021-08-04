@@ -7,8 +7,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #SingleInstance force
 
-#Include C:\Users\yonic\Documents\applications\ahk\scripts\main.ahk
-#Include C:\Users\yonic\Documents\applications\ahk\scripts\windows_switching.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\main.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\windows_switching.ahk
 
 ;=====================================================================================
 ; OKNA
