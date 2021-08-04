@@ -73,23 +73,3 @@ if item contains sound_effects
 	WinClose, WhooshToHit
 	WinClose, wooshes
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;Pamatuji si, když jsi měl asi 10,000 odběrů a já tě objevil ještě s mikrofonem z brambory a trollení na legends worldu. Od té doby se strašně moc změnilo.. Čas plyne jako voda a tobě už bude 19. Za poslední 2 roky ses úplně změnil, vyspěl jsi
