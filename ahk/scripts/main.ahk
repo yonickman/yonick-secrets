@@ -7,7 +7,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #SingleInstance force
 
-Iconn = C:\Users\yonic\Documents\applications\ahk\support_files\icon1.png
+Iconn = C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\icon.png
 Menu, Tray, Icon, %Iconn%
 
 #IfWinActive ahk_class Chrome_WidgetWin_1
@@ -65,57 +65,13 @@ send, ^+!2
 send, ^+!2
 
 
-;preset(item)
-;{
-;keywait, %A_PriorHotKey%
-;
-;coordmode, pixel, Screen
-;coordmode, mouse, Screen
-;coordmode, Caret, Screen
-;
-;BlockInput, SendAndMouse
-;BlockInput, MouseMove
-;BlockInput, On
-;
-;SetKeyDelay, 0
-;
-;Sendinput, ^!+k
-;sleep 5
-;Sendinput, ^!+k
-;sleep 5
-;
-;MouseGetPos, xposP, yposP
-;
-;DllCall("SetCursorPos", "int", -500, "int", 600)
-;sleep 5
-;
-;MouseClick, middle, , , 1
-;sleep 5
-;
-;Sendinput, ^b
-;sleep 5
-;
-;Sendinput, %item%
-;sleep 5
-;
-;DllCall("SetCursorPos", "int", -732, "int", 190)
-;sleep 5
-;
-;MouseClickDrag, Left, , , %xposP%, %yposP%, 0
-;
-;MouseClick, middle, , , 1
-;
-;blockinput, MouseMoveOff
-;BlockInput, off
-;}
-
 preset(item)
 {
 keywait, %A_PriorHotKey%
 
-coordmode, pixel, Window
-coordmode, mouse, Window
-coordmode, Caret, Window
+coordmode, pixel, Screen
+coordmode, mouse, Screen
+coordmode, Caret, Screen
 
 BlockInput, SendAndMouse
 BlockInput, MouseMove
@@ -123,14 +79,17 @@ BlockInput, On
 
 SetKeyDelay, 0
 
-Sendinput, ^!+k ;shuttle stop
+Sendinput, ^!+k
 sleep 5
 Sendinput, ^!+k
 sleep 5
 
 MouseGetPos, xposP, yposP
 
-Sendinput, ^!+7
+DllCall("SetCursorPos", "int", -500, "int", 600)
+sleep 5
+
+MouseClick, middle, , , 1
 sleep 5
 
 Sendinput, ^b
@@ -139,17 +98,7 @@ sleep 5
 Sendinput, %item%
 sleep 5
 
-MouseMove, %A_CaretX%, %A_CaretY%
-
-MouseGetPos, , , Window, classNN
-WinGetClass, class, ahk_id %Window%
-
-ControlGetPos, XX, YY, Width, Height, %classNN%, ahk_class %class%, SubWindow, SubWindow 
-
-MouseMove, XX+25, YY+70, 0
-sleep 5
-
-Sendinput, ^!+4
+DllCall("SetCursorPos", "int", -732, "int", 190)
 sleep 5
 
 MouseClickDrag, Left, , , %xposP%, %yposP%, 0
@@ -159,6 +108,57 @@ MouseClick, middle, , , 1
 blockinput, MouseMoveOff
 BlockInput, off
 }
+
+;preset(item)
+;{
+;keywait, %A_PriorHotKey%
+;
+;coordmode, pixel, Window
+;coordmode, mouse, Window
+;coordmode, Caret, Window
+;
+;BlockInput, SendAndMouse
+;BlockInput, MouseMove
+;BlockInput, On
+;
+;SetKeyDelay, 0
+;
+;Sendinput, ^!+k ;shuttle stop
+;sleep 5
+;Sendinput, ^!+k
+;sleep 5
+;
+;MouseGetPos, xposP, yposP
+;
+;Sendinput, ^!+7
+;sleep 5
+;
+;Sendinput, ^b
+;sleep 5
+;
+;Sendinput, %item%
+;sleep 5
+;
+;MouseMove, %A_CaretX%, %A_CaretY%
+;
+;MouseGetPos, , , Window, classNN
+;WinGetClass, class, ahk_id %Window%
+;
+;ControlGetPos, XX, YY, Width, Height, %classNN%, ahk_class %class%, SubWindow, SubWindow 
+;
+;MouseMove, XX+25, YY+70, 0
+;sleep 5
+;
+;Sendinput, ^!+4
+;sleep 5
+;
+;MouseClickDrag, Left, , , %xposP%, %yposP%, 0
+;
+;MouseClick, middle, , , 1
+;
+;blockinput, MouseMoveOff
+;BlockInput, off
+;}
 
 ;=====================================================================================
 
@@ -190,7 +190,7 @@ MouseClick, Left, , , 1
 sleep 5
 
 PixelSearch, xx, yy, 1888, 79, 1914, 108, 0x2D8CEC, 30, Fast RGB
-MouseMove, xx, yy
+MouseMove, xx, yy, 0
 sleep 5
 
 ;DllCall("SetCursorPos", "int", 1904, "int", 87)
@@ -221,9 +221,9 @@ MouseGetPos xPosCursor, yPosCursor
 CoordMode Pixel
 CoordMode Mouse, screen
 
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_unlocked_targeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_unlocked_targeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_unlocked_targeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_unlocked_targeted.png
 if ErrorLevel = 1
     goto try21
 if ErrorLevel = 0
@@ -235,9 +235,9 @@ if ErrorLevel = 0
 	}
 	
 try21:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_unlocked_untargeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_unlocked_untargeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_unlocked_untargeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_unlocked_untargeted.png
 if ErrorLevel = 1
     goto try31
 if ErrorLevel = 0
@@ -249,9 +249,9 @@ if ErrorLevel = 0
 	}
 
 try31:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_locked_targeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_locked_targeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_locked_targeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_locked_targeted.png
 if ErrorLevel = 1
     goto try41
 if ErrorLevel = 0
@@ -263,9 +263,9 @@ if ErrorLevel = 0
 	}
 
 try41:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_locked_untargeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_locked_untargeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_locked_untargeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_locked_untargeted.png
 if ErrorLevel = 0
 	{
 	MouseMove, FoundX+15, FoundY+15, 0
@@ -294,9 +294,9 @@ MouseGetPos xPosCursor, yPosCursor
 CoordMode Pixel
 CoordMode Mouse, screen
 
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_unlocked_targeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_unlocked_targeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_unlocked_targeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_unlocked_targeted.png
 if ErrorLevel = 1
     goto try22
 if ErrorLevel = 0
@@ -308,9 +308,9 @@ if ErrorLevel = 0
 	}
 	
 try22:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_unlocked_untargeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_unlocked_untargeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_unlocked_untargeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_unlocked_untargeted.png
 if ErrorLevel = 1
     goto try32
 if ErrorLevel = 0
@@ -322,9 +322,9 @@ if ErrorLevel = 0
 	}
 
 try32:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_locked_targeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_locked_targeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_locked_targeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_locked_targeted.png
 if ErrorLevel = 1
     goto try42
 if ErrorLevel = 0
@@ -336,9 +336,9 @@ if ErrorLevel = 0
 	}
 
 try42:
-ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_locked_untargeted.png
+ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_locked_untargeted.png
 if ErrorLevel = 1
-	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\applications\ahk\support_files\A3_ALT_locked_untargeted.png
+	ImageSearch, FoundX, FoundY, 0, 600, 480, 1000, *5 C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\support_files\A3_ALT_locked_untargeted.png
 if ErrorLevel = 0
 	{
 	MouseMove, FoundX+90, FoundY+3, 0
@@ -410,7 +410,7 @@ MouseGetPos x, y
 DllCall("SetCursorPos", "int", 88, "int", 135)
 MouseClick, left
 PixelSearch, Px, Py, 130, 175, 445, 185, 0x2d8ceb, 30, Fast RGB
-MouseMove, Px+10, Py+5
+MouseMove, Px+10, Py+5, 0
 SendEvent {LButton Down}
 Loop
 {
@@ -433,7 +433,7 @@ if color=0x1D1D1D
 DllCall("SetCursorPos", "int", 120, "int", 180)
 MouseClick, left
 Sendinput, ^!+5
-MouseMove, x, y
+MouseMove, x, y, 0
 }
 if color=0x454545
 {
