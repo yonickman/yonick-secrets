@@ -11,7 +11,7 @@ Menu, Tray, Icon, %Iconn%
 #SingleInstance force
 
 #Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\main.ahk
-#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\windows_switching.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\windows.ahk
 
 ;=====================================================================================
 ; OKNA
@@ -23,3 +23,54 @@ Menu, Tray, Icon, %Iconn%
 !2::open_explorer()
 !3::open_browser()
 !4::open_discord()
+
+#ifWinActive ahk_exe Adobe Premiere Pro.exe
+!1::open_effects()
+
+;=====================================================================================
+; PREMIERE
+;=====================================================================================
+
+#ifWinActive ahk_exe Adobe Premiere Pro.exe
+
+;anchor point ----------------------------------
+F5::anchor()
+
+;presets ----------------------------------
+F2::preset("Slide Left (IN)")
+F3::preset("Slide Left (OUT)")
+F4::preset("Bige Zoom")
+
+F6::preset("Blur transition")
+F8::preset("A - GENTLE SHAKE")
+
++XButton2::preset("clear motion")
+
+NumpadMult::preset("light blink")
+NumpadSub::preset("blur blink")
+
+;track locker
+XButton2::tracklocker()
+XButton1::musicmute()
+
+;video / audio import
++F1::importer("Bars and Tone")
++F2::importer("no_signal_02")
+!+S::importer("GUI_Swipe 09 1")
+^!+C::importer("censor")
+^!+B::importer("bad_word")
+
+;scale highlight
+F1::highlight("scale")
+
+;solid keyframe
++W::keyframe("scale")
+
+
+;150% speed
++2::
+send, ^+!2
+send, ^+!2
+send, ^+!2
+send, ^+!2
+send, ^+!2
