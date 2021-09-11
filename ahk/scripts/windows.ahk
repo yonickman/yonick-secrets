@@ -27,6 +27,12 @@ MouseGetPos,,, Win ;Detect Window mouse is over
 return WinExist(WinTitle " ahk_id " Win) ;Return Window title that Mouse is overj
 }
 
+maximize()
+{
+WinGetTitle, Title, A
+WinMaximize, %Title%
+}
+
 open_premiere()
 {
 WinActivate ahk_class Premiere Pro
@@ -103,114 +109,22 @@ if item contains sound_effects
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-;-------------------------------------------------
-; Window dragging via alt+lbutton                -
-; Author: Lasmori (email AT lasmori D0T com)     -
-;-------------------------------------------------
-Xbutton2::
-
-CoordMode, Mouse, Relative
-MouseGetPos, cur_win_x, cur_win_y, window_id
-WinGet, window_minmax, MinMax, ahk_id %window_id%
-
-; Return if the window is maximized or minimized
-if window_minmax <> 0
+yt_search()
 {
-  return
-}
+global
+Gui, Add, Text,, Search:
+Gui, Add, Edit, vname ym  ; The ym option starts a new column of controls.
+Gui, Add, Button, default, OK  ; The label ButtonOK (if it exists) will be run when the button is pressed.
+Gui, Show,, YouTube
+return  ; End of auto-execute section. The script is idle until the user does something.
 
-CoordMode, Mouse, Screen
-SetWinDelay, 0
-
-loop
-{
-  ; exit the loop if the left mouse button was released
-  if !GetKeyState("Xbutton2", "P")
-  {
-    break
-  }
-
-  ; move the window based on cursor position
-  MouseGetPos, cur_x, cur_y
-  WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
-}
-
+GuiClose:
+ButtonOK:
+Gui, Submit  ; Save the input from the user to each control's associated variable.
+StringReplace, nname, name, %A_Space%, +, All
+link := "https://www.youtube.com/results?search_query=" + nname
+Run opera.exe %link%
+GuiEscape:
+    Gui, Destroy
 return
-
-
-
-
-
-
-
-
-
-
-
-#if not WinActive("ahk_exe Adobe Premiere Pro.exe")
-
-#if not (WinActive("ahk_class Premiere Pro") and WinActive("ahk_exe Adobe Premiere Pro.exe") or (WinActive("ahk_exe AfterFX.exe"))
-or (WinActive("ahk_class DroverLord - Window Class") and WinActive("ahk_exe Adobe Premiere Pro.exe") ) ) ;YOU CAN DELETE THIS LINE ENTIRELY. i have this just for a SINGLE exception in Premiere when i want to use window dragging on Save/load dialouge boxes and sheeyt. Also i want it to work when the timeline is NOT on the main Premiere window. ;edit: wow, it works incredibly well. nice! ;edit2: now it also deliberately won't work in after effects. Nice! so i can keep adding ORs to the end to add more applications. I just remember that pairing OR and NOT together can sometimes result in everything being accepted by the IF statement...
-
-
-
-
-Xbutton1::
-
-; Get the initial mouse position and window id, and
-; abort if the window is maximized.
-MouseGetPos,KDE_X1,KDE_Y1,KDE_id
-WinGet,KDE_Win,MinMax,ahk_id %KDE_id%
-If KDE_Win
-    return
-; Get the initial window position and size.
-WinGetPos,KDE_WinX1,KDE_WinY1,KDE_WinW,KDE_WinH,ahk_id %KDE_id%
-; Define the window region the mouse is currently in.
-; The four regions are Up and Left, Up and Right, Down and Left, Down and Right.
-If (KDE_X1 < KDE_WinX1 + KDE_WinW / 2)
-    KDE_WinLeft := 1
-Else
-    KDE_WinLeft := -1
-If (KDE_Y1 < KDE_WinY1 + KDE_WinH / 2)
-    KDE_WinUp := 1
-Else
-    KDE_WinUp := -1
-Loop
-{
-    GetKeyState,KDE_Button,Xbutton1,P ; Break if button has been released
-	If KDE_Button = U
-        break
-
-    MouseGetPos,KDE_X2,KDE_Y2 ; Get the current mouse position.
-    ; Get the current window position and size.
-    WinGetPos,KDE_WinX1,KDE_WinY1,KDE_WinW,KDE_WinH,ahk_id %KDE_id%
-    KDE_X2 -= KDE_X1 ; Obtain an offset from the initial mouse position.
-    KDE_Y2 -= KDE_Y1
-    ; Then, act according to the defined region.
-    SetWinDelay,-1
-	WinMove,ahk_id %KDE_id%,, KDE_WinX1 + (KDE_WinLeft+1)/2*KDE_X2  ; X of resized window
-                            , KDE_WinY1 +   (KDE_WinUp+1)/2*KDE_Y2  ; Y of resized window
-                            , KDE_WinW  -     KDE_WinLeft  *KDE_X2  ; W of resized window
-                            , KDE_WinH  -       KDE_WinUp  *KDE_Y2  ; H of resized window
-	KDE_X1 := (KDE_X2 + KDE_X1) ; Reset the initial position for the next iteration.
-    KDE_Y1 := (KDE_Y2 + KDE_Y1)
 }
-return
-
-
-
-
-
-
-
