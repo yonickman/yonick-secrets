@@ -17,21 +17,29 @@ Menu, Tray, Icon, %Iconn%
 ; OKNA
 ;=====================================================================================
 
-#IfWinActive
+#if not WinActive("ahk_exe javaw.exe")
 
 !1::open_premiere()
 !2::open_explorer()
 !3::open_browser()
 !4::open_discord()
+#if not WinActive("ahk_exe Adobe Premiere Pro.exe")
+F4::maximize()
 
-#ifWinActive ahk_exe Adobe Premiere Pro.exe
-!1::open_effects()
+
+;=====================================================================================
+; PREMIERE
+;=====================================================================================
+
+!W::yt_search()
 
 ;=====================================================================================
 ; PREMIERE
 ;=====================================================================================
 
 #ifWinActive ahk_exe Adobe Premiere Pro.exe
+
+!1::open_effects()
 
 ;anchor point ----------------------------------
 F5::anchor()
