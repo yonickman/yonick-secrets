@@ -128,3 +128,8 @@ GuiEscape:
     Gui, Destroy
 return
 }
+
+mystudylife()
+{
+Run, opera.exe -new-window https://app.mystudylife.com/dashboard
+}
