@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -11,6 +11,16 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #KeyHistory 500
 
 Menu, Tray, Icon, imageres.dll, 262 ;makes the icon into two window things
+
+
+GroupAdd, aplikace, ahk_exe Adobe Premiere Pro.exe
+GroupAdd, aplikace, ahk_exe javaw.exe
+
+#IfWinActive ahk_group aplikace
+;#if not (WinActive("ahk_exe Adobe Premiere Pro.exe") or ("ahk_exe javaw.exe"))
+
+#if not (WinActive("ahk_class Premiere Pro") and WinActive("ahk_exe Adobe Premiere Pro.exe") or (WinActive("ahk_exe AfterFX.exe"))
+or (WinActive("ahk_class DroverLord - Window Class") and WinActive("ahk_exe Adobe Premiere Pro.exe") ) ) ;YOU CAN DELETE THIS LINE ENTIRELY. i have this just for a SINGLE exception in Premiere when i want to use window dragging on Save/load dialouge boxes and sheeyt. Also i want it to work when the timeline is NOT on the main Premiere window. ;edit: wow, it works incredibly well. nice! ;edit2: now it also deliberately won't work in after effects. Nice! so i can keep adding ORs to the end to add more applications. I just remember that pairing OR and NOT together can sometimes result in everything being accepted by the IF statement...
 
 
 ;this next line attempts to fix issues with different screens having different UI scaling. it doesn't work.
@@ -140,11 +150,7 @@ return
 
 ;;;;note:  WinActive("ahk_class #32770") is a save/load Explorer window, mostly.
 
-;#if not WinActive("ahk_exe Adobe Premiere Pro.exe")
-#if not (WinActive("ahk_exe Adobe Premiere Pro.exe") and WinActive("ahk_exe javaw.exe"))
 
-#if not (WinActive("ahk_class Premiere Pro") and WinActive("ahk_exe Adobe Premiere Pro.exe") or (WinActive("ahk_exe AfterFX.exe"))
-or (WinActive("ahk_class DroverLord - Window Class") and WinActive("ahk_exe Adobe Premiere Pro.exe") ) ) ;YOU CAN DELETE THIS LINE ENTIRELY. i have this just for a SINGLE exception in Premiere when i want to use window dragging on Save/load dialouge boxes and sheeyt. Also i want it to work when the timeline is NOT on the main Premiere window. ;edit: wow, it works incredibly well. nice! ;edit2: now it also deliberately won't work in after effects. Nice! so i can keep adding ORs to the end to add more applications. I just remember that pairing OR and NOT together can sometimes result in everything being accepted by the IF statement...
 
 
 
@@ -296,3 +302,5 @@ Loop
     KDE_Y1 := (KDE_Y2 + KDE_Y1)
 }
 return
+
+
