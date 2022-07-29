@@ -22,6 +22,7 @@ GroupAdd, aplikace, ahk_exe javaw.exe
 #if not (WinActive("ahk_class Premiere Pro") and WinActive("ahk_exe Adobe Premiere Pro.exe") or (WinActive("ahk_exe AfterFX.exe"))
 or (WinActive("ahk_class DroverLord - Window Class") and WinActive("ahk_exe Adobe Premiere Pro.exe") ) ) ;YOU CAN DELETE THIS LINE ENTIRELY. i have this just for a SINGLE exception in Premiere when i want to use window dragging on Save/load dialouge boxes and sheeyt. Also i want it to work when the timeline is NOT on the main Premiere window. ;edit: wow, it works incredibly well. nice! ;edit2: now it also deliberately won't work in after effects. Nice! so i can keep adding ORs to the end to add more applications. I just remember that pairing OR and NOT together can sometimes result in everything being accepted by the IF statement...
 
+#if not (WinActive("ahk_exe javaw.exe"))
 
 ;this next line attempts to fix issues with different screens having different UI scaling. it doesn't work.
 DllCall("SetThreadDpiAwarenessContext", "ptr", -3, "ptr")
