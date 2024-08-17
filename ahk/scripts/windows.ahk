@@ -21,7 +21,7 @@ Menu, Tray, Icon, imageres.dll, 262
 WheelUp::Send {Volume_Up} ;Increase volume when over taskbar
 WheelDown::Send {Volume_Down} ;Decrease volumen when over taskbar
 #If
-	
+
 MouseIsOver(WinTitle) {
 MouseGetPos,,, Win ;Detect Window mouse is over
 return WinExist(WinTitle " ahk_id " Win) ;Return Window title that Mouse is overj
@@ -36,13 +36,24 @@ WinMaximize, %Title%
 open_premiere()
 {
 WinActivate ahk_class Premiere Pro
-Return
+return
 }
 
-open_effects()
+open_ae()
 {
-WinActivate ahk_class AE_CApplication_18.0
-Return
+WinActivate ahk_class AE_CApplication_23.2
+return
+}
+
+open_photoshop()
+{
+WinActivate ahk_class Photoshop
+return
+}
+
+open_blender()
+{
+WinActivate ahk_exe blender.exe
 }
 
 open_explorer()
@@ -107,6 +118,22 @@ if item contains sound_effects
 	WinClose, wooshes
 }
 
+get_color()
+{
+    MouseGetPos, xpos, ypos
+    PixelGetColor, color, %xpos%, %ypos%, RGB
+    hex := RGBToHex(color)
+    Clipboard := hex
+    ;MsgBox, Color Hex Code: %hex%`nCopied to clipboard!
+}
+
+RGBToHex(color) {
+    r := (color & 0xFF)
+    g := ((color >> 8) & 0xFF)
+    b := ((color >> 16) & 0xFF)
+    hex := Format("{:02X}{:02X}{:02X}", b, g, r)
+    return hex
+}
 
 
 yt_search()
@@ -127,9 +154,4 @@ Run opera.exe %link%
 GuiEscape:
     Gui, Destroy
 return
-}
-
-mystudylife()
-{
-Run, opera.exe -new-window https://app.mystudylife.com/dashboard
 }
