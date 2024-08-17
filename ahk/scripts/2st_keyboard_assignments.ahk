@@ -10,8 +10,9 @@ Menu, Tray, Icon, %Iconnn%
 
 #SingleInstance force
 
-#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\main.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\premiere.ahk
 #Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\windows.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\blender.ahk
 
 #if (getKeyState("F23", "P"))
 F23::return ;this line is mandatory for proper functionality
