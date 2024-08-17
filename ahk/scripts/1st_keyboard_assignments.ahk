@@ -10,8 +10,18 @@ Menu, Tray, Icon, %Iconn%
 
 #SingleInstance force
 
-#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\main.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\premiere.ahk
 #Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\windows.ahk
+#Include C:\Users\yonic\Documents\GitHub\yonick-secrets\ahk\scripts\blender.ahk
+
+
+;=====================================================================================
+; GENERAL
+;=====================================================================================
+
+!c::get_color()
+;#if not WinActive("ahk_exe Adobe Premiere Pro.exe")
+F4::maximize()
 
 ;=====================================================================================
 ; OKNA
@@ -23,16 +33,23 @@ Menu, Tray, Icon, %Iconn%
 !2::open_explorer()
 !3::open_browser()
 !4::open_discord()
-#if not WinActive("ahk_exe Adobe Premiere Pro.exe")
-F4::maximize()
-
+!q::open_photoshop()
+!e::open_ae()
 
 ;=====================================================================================
 ; STRANKY
 ;=====================================================================================
 
 !W::yt_search()
-!E::mystudylife()
+
+;=====================================================================================
+; BLENDER
+;=====================================================================================
+
+
+
+
+
 
 ;=====================================================================================
 ; PREMIERE
@@ -40,46 +57,50 @@ F4::maximize()
 
 #ifWinActive ahk_exe Adobe Premiere Pro.exe
 
-!1::open_effects()
+!F1::
+Send ^\
+return
 
-;anchor point ----------------------------------
-F5::anchor()
-
-;presets ----------------------------------
-F2::preset("Slide Left (IN)")
-F3::preset("Slide Left (OUT)")
-F4::preset("Bige Zoom")
-
-F6::preset("Blur transition")
-F8::preset("A - GENTLE SHAKE")
-
-+XButton2::preset("clear motion")
-
-NumpadMult::preset("light blink")
-NumpadSub::preset("blur blink")
-
-;track locker
-XButton2::tracklocker()
-XButton1::musicmute()
-
-;video / audio import
-+F1::importer("Bars and Tone")
-+F2::importer("no_signal_02")
-!+S::importer("GUI_Swipe 09 1")
-^!+C::importer("censor")
-^!+B::importer("bad_word")
-
-;scale highlight
-F1::highlight("scale")
-
-;solid keyframe
-+W::keyframe("scale")
-
-
-;150% speed
-+2::
-send, ^+!2
-send, ^+!2
-send, ^+!2
-send, ^+!2
-send, ^+!2
+;!1::open_effects()
+;
+;;anchor point ----------------------------------
+;F5::anchor()
+;
+;;presets ----------------------------------
+;F2::preset("Slide Left (IN)")
+;F3::preset("Slide Left (OUT)")
+;F4::preset("Bige Zoom")
+;
+;F6::preset("Blur transition")
+;F8::preset("A - GENTLE SHAKE")
+;
+;+XButton2::preset("clear motion")
+;
+;NumpadMult::preset("light blink")
+;NumpadSub::preset("blur blink")
+;
+;;track locker
+;XButton2::tracklocker()
+;XButton1::musicmute()
+;
+;;video / audio import
+;+F1::importer("Bars and Tone")
+;+F2::importer("no_signal_02")
+;!+S::importer("GUI_Swipe 09 1")
+;^!+C::importer("censor")
+;^!+B::importer("bad_word")
+;
+;;scale highlight
+;F1::highlight("scale")
+;
+;;solid keyframe
+;+W::keyframe("scale")
+;
+;
+;;150% speed
+;+2::
+;send, ^+!2
+;send, ^+!2
+;send, ^+!2
+;send, ^+!2
+;send, ^+!2
